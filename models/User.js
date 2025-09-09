@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -23,10 +24,20 @@ const UserSchema = new mongoose.Schema({
     minlength: 6,
   },
 });
-// Mongoose middleware
+// Mongoose middleware, hashing is here, //  pre-routine for the save operation, will run before saving data to the database for any .save() call
 UserSchema.pre("save", async function () {
-  const salt = await bcrypt.genSalt(10);
+  const salt = await bcrypt.genSalt(10); // Extra safety salt()
   this.password = await bcrypt.hash(this.password, salt);
 });
+
+UserSchema.methods.createJWT = function () {
+  return jwt.sign(
+    { userID: this._id, name: this.name },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: process.env.JWT_LIFETIME,
+    }
+  );
+};
 
 module.exports = mongoose.model("User", UserSchema);
