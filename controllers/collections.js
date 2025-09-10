@@ -5,7 +5,7 @@ const getCollection = async (req, res) => {
   res.send("get collection");
 };
 const createCollection = async (req, res) => {
-  res.send("create a collection");
+  res.json(req.user);
 };
 const updateCollection = async (req, res) => {
   res.send("update collection");
