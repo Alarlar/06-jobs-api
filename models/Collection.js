@@ -1,23 +1,38 @@
-const { required } = require("joi");
 const mongoose = require("mongoose");
 
-const JobSchema = new mongoose.Schema(
+const MuseumSchema = new mongoose.Schema(
   {
-    painting: {
+    name: {
       type: String,
-      required: [true, "Please provide picture name"],
-      maxlength: 50,
-    },
-    generes: {
-      type: String,
-      required: [true, "Please provide generes name"],
+      required: [true, "Please provide museum name"],
       maxlength: 100,
     },
-    available: {
-      type: String,
-      enum: ["onsite", "loaned", "borrowed"],
-      default: "onsite",
-    },
+    paintings: [
+      {
+        name: {
+          type: String,
+          required: [true, "Please provide painting name"],
+          maxlength: 50,
+        },
+        artist: {
+          type: String,
+          required: [true, "Please provide artist name"],
+          maxlength: 50,
+        },
+        genres: [
+          {
+            type: String,
+            enum: ["Renaissance", "Impressionism", "Modernism"],
+            required: [true, "Please provide generes name"],
+          },
+        ],
+        available: {
+          type: String,
+          enum: ["onsite", "loaned", "borrowed"],
+          default: "onsite",
+        },
+      },
+    ],
     createdBy: {
       type: mongoose.Types.ObjectId,
       ref: "User",
@@ -27,4 +42,4 @@ const JobSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Collection", JobSchema);
+module.exports = mongoose.model("Collection", MuseumSchema);
