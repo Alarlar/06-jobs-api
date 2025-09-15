@@ -11,7 +11,7 @@ const {
 
 router.route("/").post(createCollection).get(getAllCollections); // REST api, web server handling HTTP requests
 router
-  .route("./:id")
+  .route("/:id")
   .get(getCollection)
   .delete(deleteCollection)
   .patch(updateCollection);
