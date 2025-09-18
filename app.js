@@ -34,7 +34,7 @@ app.use(xss());
 
 // extra packages
 
-app.get("/", (req, res) => {
+app.get("/info", (req, res) => {
   res.send("collections api");
 });
 // routes
