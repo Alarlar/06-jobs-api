@@ -34,6 +34,9 @@ app.use(xss());
 
 // extra packages
 
+app.get("/", (req, res) => {
+  res.send("collections api");
+});
 // routes
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/collections", authenticateUser, collectionRouter);
