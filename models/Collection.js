@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const MuseumSchema = new mongoose.Schema(
+const CollectionSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -36,10 +36,10 @@ const MuseumSchema = new mongoose.Schema(
     createdBy: {
       type: mongoose.Types.ObjectId,
       ref: "User",
-      required: [true, "Please provide"],
+      required: [true, "Please provide user"],
     },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Collection", MuseumSchema);
+module.exports = mongoose.model("Collection", CollectionSchema);
