@@ -34,9 +34,11 @@ app.use(xss());
 
 // extra packages
 
-app.get("/info", (req, res) => {
-  res.send("collections api");
+app.get("/", (req, res) => {
+  res.send('<h1>Collections API</h1><a href="/api-docs">Documentation</a>');
 });
+
+app.use(express.static("public"));
 // routes
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/collections", authenticateUser, collectionRouter);
