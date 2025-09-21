@@ -8,6 +8,8 @@
     <title> Collections List</title>
 </head>
 
+<script src="./index.js" type="module"></script>
+
 <body>
     <h1>Collection List</h1>
     <hr />
@@ -73,14 +75,14 @@
                     <input type="text" id="painting" />
                 </div>
                 <div>
-                    <label for="status">status:</label>
-                    <select id="status">
-                        <option value="pending">pending</option>
-                        <option value="interview">interview</option>
-                        <option value="declined">declined</option>
+                    <label for="available">available:</label>
+                    <select id="available">
+                        <option value="onsite">onsite</option>
+                        <option value="loaned">loaned</option>
+                        <option value="borrowed">borrowed</option>
                     </select>
                 </div>
-                <button type="button" id="adding-job">add</button>
+                <button type="button" id="adding-collection">add</button>
                 <button type="button" id="edit-cancel">cancel</button>
             </form>
         </div>
