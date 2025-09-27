@@ -5,87 +5,89 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> Collections List</title>
+    <title>Collections List</title>
 </head>
 
-<script src="./index.js" type="module"></script>
-
 <body>
-    <h1>Collection List</h1>
+    <h1>Collections List</h1>
     <hr />
     <p id="message"></p>
     <hr />
-    <p id="message"></p>
-    <hr />
-    <div id="logon-register" style="display:none;">
+    <div id="logon-register" style="display: none">
         <button type="button" id="logon">logon</button>
         <button type="button" id="register">register</button>
     </div>
-    <div id="logon-div" style="display:none;">
+    <div id="logon-div" style="display: none">
         <form>
             <div>
                 <label for="email">email:</label>
                 <input type="email" id="email" />
             </div>
-            <div> <label for="password">password:</label>
+            <div>
+                <label for="password">password:</label>
                 <input type="password" id="password" />
             </div>
             <button type="button" id="logon-button">logon</button>
             <button type="button" id="logon-cancel">cancel</button>
         </form>
-        <div id="register-div" style="display:none;">
-            <form>
-                <div> <label for="name">name:</label>
-                    <input type="text" id="name" />
-                </div>
-                <div>
-                    <label for="email1">email:</label>
-                    <input type="email" id="email1" />
-                </div>
-                <div> <label for="password1">password:</label>
-                    <input type="password" id="password1" />
-                </div>
-                <div> <label for="password2">verify password:</label>
-                    <input type="password" id="password2" />
-                </div>
-                <button type="button" id="register-button">register</button>
-                <button type="button" id="register-cancel">cancel</button>
-            </form>
-        </div>
-        <div id="collections" style="display:none;">
-            <p id="collections-message"></p>
-            <table id="collections-table">
-                <tr id="collections-table-header">
-                    <th>Museum</th>
-                    <th>Painting</th>
-                    <th>Status</th>
-                    <th colspan="2"></th>
-                </tr>
-            </table>
-            <button type="button" id="add-job">add job</button>
-            <button type="button" id="logoff">log off</button>
-        </div>
-        <div id="edit-job" style="display:none;">
-            <form>
-                <div>
-                    <label for="museum">museum:</label>
-                    <input type="text" id="museum" />
-                </div>
-                <div> <label for="painting">painting:</label>
-                    <input type="text" id="painting" />
-                </div>
-                <div>
-                    <label for="available">available:</label>
-                    <select id="available">
-                        <option value="onsite">onsite</option>
-                        <option value="loaned">loaned</option>
-                        <option value="borrowed">borrowed</option>
-                    </select>
-                </div>
-                <button type="button" id="adding-collection">add</button>
-                <button type="button" id="edit-cancel">cancel</button>
-            </form>
-        </div>
+    </div>
+    <div id="register-div" style="display: none">
+        <form>
+            <div>
+                <label for="name">name:</label>
+                <input type="text" id="name" />
+            </div>
+            <div>
+                <label for="email1">email:</label>
+                <input type="email" id="email1" />
+            </div>
+            <div>
+                <label for="password1">password:</label>
+                <input type="password" id="password1" />
+            </div>
+            <div>
+                <label for="password2">verify password:</label>
+                <input type="password" id="password2" />
+            </div>
+            <button type="button" id="register-button">register</button>
+            <button type="button" id="register-cancel">cancel</button>
+        </form>
+    </div>
+    <div id="collections" style="display: none">
+        <p id="collections-message"></p>
+        <table id="collections-table">
+            <tr id="collections-table-header">
+                <th>Company</th>
+                <th>Position</th>
+                <th>Status</th>
+                <th colspan="2"></th>
+            </tr>
+        </table>
+        <button type="button" id="add-collection">add collection</button>
+        <button type="button" id="logoff">log off</button>
+    </div>
+    <div id="edit-collection" style="display: none">
+        <form>
+            <div>
+                <label for="company">company:</label>
+                <input type="text" id="company" />
+            </div>
+            <div>
+                <label for="position">position:</label>
+                <input type="text" id="position" />
+            </div>
+            <div>
+                <label for="status">status:</label>
+                <select id="status">
+                    <option value="pending">pending</option>
+                    <option value="interview">interview</option>
+                    <option value="declined">declined</option>
+                </select>
+            </div>
+            <button type="button" id="adding-collection">add</button>
+            <button type="button" id="edit-cancel">cancel</button>
+        </form>
+    </div>
 </body>
 
 </html>
