@@ -46,16 +46,17 @@ export const handleAddEdit = () => {
           if (response.status === 200 || response.status === 201) {
             if (response.status === 200) {
               // a 200 is expected for a successful update
-              message.textContent = "The job entry was updated.";
+              message.textContent = "The collection entry was updated";
             } else {
               // a 201 is expected for a successful create
-              message.textContent = "The job entry was created.";
+              message.textContent =
+                "The collection entry was created for consistency";
             }
 
-            company.value = "";
-            position.value = "";
-            status.value = "pending";
-            showJobs();
+            name.value = "";
+            painting.value = "";
+            available.value = "onsite";
+            showCollections();
           } else {
             message.textContent = data.msg;
           }

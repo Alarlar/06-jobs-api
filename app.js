@@ -7,7 +7,7 @@ const app = express();
 const helmet = require("helmet");
 const cors = require("cors");
 const xss = require("xss-clean");
-const reteLimiter = require("express-rate-limit");
+const rateLimiter = require("express-rate-limit");
 
 // connectDB
 const connectDB = require("./db/connect");
@@ -22,7 +22,7 @@ const errorHandlerMiddleware = require("./middleware/error-handler");
 
 app.set("trust proxy", 1);
 app.use(
-  reteLimiter({
+  rateLimiter({
     windowMs: 15 * 60 * 1000, // 15 min
     max: 100, // limit each IP to 100 req per windowsMs
   })

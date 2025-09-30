@@ -26,11 +26,12 @@ export const handleCollections = () => {
         showAddEdit(null);
       } else if (e.target === logoff) {
         setToken(null);
-        message.textContent = "You have been logged off.";
+        document.getElementById("collections-message").textContent =
+          "You have been logged off.";
         collectionsTable.replaceChildren([collectionsTableHeader]);
         showLoginRegister();
       } else if (e.target.classList.contains("editButton")) {
-        message.textContent = "";
+        document.getElementById("collections-message").textContent = "";
         showAddEdit(e.target.dataset.id);
       }
     }
@@ -70,11 +71,12 @@ export const showCollections = async () => {
         collectionsTable.replaceChildren(...children);
       }
     } else {
-      message.textContent = data.msg;
+      document.getElementById("collections-message").textContent = data.msg;
     }
   } catch (err) {
     console.log(err);
-    message.textContent = "A communication error occurred.";
+    document.getElementById("collections-message").textContent =
+      "A communication error occurred.";
   }
   enableInput(true);
   setDiv(collectionsDiv);

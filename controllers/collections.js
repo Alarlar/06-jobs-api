@@ -66,7 +66,7 @@ const deleteCollection = async (req, res) => {
   if (!collection) {
     throw new NotFoundError(`No collection with id ${collectionId}`);
   }
-  res.status(StatusCodes.OK).send();
+  res.status(StatusCodes.OK).json({ msg: "The entry was deleted." });
 };
 
 module.exports = {
