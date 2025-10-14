@@ -1,7 +1,7 @@
 console.log("index.js loaded");
 let activeDiv = null;
 export const setDiv = (newDiv) => {
-  if (newDiv != activeDiv) {
+  if (newDiv !== activeDiv) {
     if (activeDiv) {
       activeDiv.style.display = "none";
     }

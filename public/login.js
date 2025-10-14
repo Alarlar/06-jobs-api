@@ -10,7 +10,7 @@ import { showLoginRegister } from "./loginRegister.js";
 import { showCollections } from "./collections.js";
 
 let loginDiv = null;
-let email = null;
+let email = "";
 let password = null;
 
 export const handleLogin = () => {
