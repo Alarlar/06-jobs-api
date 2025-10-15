@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const MuseumSchema = new mongoose.Schema(
+const JobSchema = new mongoose.Schema(
   {
     name: {
       type: String,
