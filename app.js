@@ -4,7 +4,7 @@ const express = require("express");
 const app = express();
 
 //connect db
-
+const connectDB = require("./db/connect");
 //routers
 const authRouter = require("./routes/auth");
 const jobsRouter = require("./routes/jobs");
@@ -23,9 +23,10 @@ app.use("/api/v1/jobs", jobsRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5003;
 
 const start = async () => {
+  await connectDB(process.env.MONGO_URI);
   try {
     app.listen(port, () =>
       console.log(`Server is listening on port ${port}...`),
