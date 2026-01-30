@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs"); // Это готовое решение из библиотеки для хеширования пароля
+const jwt = require("jsonwebtoken");
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -22,5 +24,18 @@ const UserSchema = new mongoose.Schema({
     minlength: 6,
   },
 });
+
+// Это mongoose middleware - hashed password нужно задекларировать 2 метода 'genSalt()' - рандомные байты, 'hash()'
+UserSchema.pre("save", async function () {
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
+
+// Generating token by using instance method
+UserSchema.methods.createJWT = function () {
+  return jwt.sign({ userId: this._id, name: this.name }, "jwtSecret", {
+    expiresIn: "30d",
+  });
+};
 
 module.exports = mongoose.model("User", UserSchema);
