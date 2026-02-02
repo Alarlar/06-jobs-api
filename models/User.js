@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs"); // Это готовое решение из библиотеки для хеширования пароля
+const bcrypt = require("bcryptjs"); // Это готовое решение из библиотеки для хеширования пароля, и сравнивает пароли хешированные
 const jwt = require("jsonwebtoken");
 
 const UserSchema = new mongoose.Schema({
@@ -33,9 +33,19 @@ UserSchema.pre("save", async function () {
 
 // Generating token by using instance method
 UserSchema.methods.createJWT = function () {
-  return jwt.sign({ userId: this._id, name: this.name }, "jwtSecret", {
-    expiresIn: "30d",
-  });
+  return jwt.sign(
+    { userId: this._id, name: this.name },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: process.env.JWT_LIFETIME,
+    },
+  );
+};
+
+// Comparing password
+UserSchema.methods.comparePassword = async function (canditatePassword) {
+  const isMatch = await bcrypt.compare(canditatePassword, this.password);
+  return isMatch;
 };
 
 module.exports = mongoose.model("User", UserSchema);
