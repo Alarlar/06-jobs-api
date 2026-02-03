@@ -24,6 +24,7 @@ const JobSchema = new mongoose.Schema(
       required: [true, "Pls provide User"],
     },
   },
+  // когда создан и когда изменен
   { timestamps: true },
 );
 
